@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SEO Hawaii — Local Citation Audits</title>
-<meta name="description" content="Free citation audits for Hawaii local businesses. Make sure your neighbors can find you on Google, Apple Maps, Yelp, and beyond.">
+<title>SEO Hawaii — Oʻahu Local Citation Audits</title>
+<meta name="description" content="Free citation audit for Oʻahu businesses. We find and fix the wrong, missing, and duplicate listings costing you customers on Google Maps, Apple Maps, Yelp, and 40+ platforms.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&amp;family=Instrument+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -71,12 +71,18 @@
   .contours .c-fill{fill:rgba(92,155,147,.06);stroke:none}
   @keyframes drift{from{transform:translateX(0)}to{transform:translateX(-40px)}}
   .contours{animation:drift 26s ease-in-out infinite alternate}
-  .hero-inner{position:relative;z-index:2;padding:120px 0 90px;max-width:720px}
-  .hero h1{font-size:clamp(2.9rem,6.4vw,5rem);margin-bottom:1.5rem}
+  /* Horizontal padding repeated on purpose: this element also carries .wrap,
+     and a `padding` shorthand here would zero out .wrap's 28px gutters,
+     shoving the hero copy flush against the viewport edge below 1120px. */
+  .hero-inner{position:relative;z-index:2;padding:120px 28px 90px;max-width:748px}
+  /* Lower bound tuned by measurement, not taste: at 2.7rem this headline ran
+     six lines on a 375px screen and pushed the risk-reversal line past the
+     fold. 2.35rem keeps the whole CTA + FUD stack above it. */
+  .hero h1{font-size:clamp(2.35rem,5.8vw,4.6rem);margin-bottom:1.4rem}
   .hero h1 em{font-style:italic;color:var(--bronze-soft)}
   .hero p.lede{
     font-size:clamp(1.05rem,1.5vw,1.22rem);color:rgba(255,255,255,.82);
-    max-width:560px;margin-bottom:2.4rem;font-weight:400;
+    max-width:580px;margin-bottom:2.2rem;font-weight:400;
   }
   .btn-row{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
   .btn{
@@ -90,6 +96,9 @@
   .btn-primary:hover svg{transform:translateX(4px)}
   .btn-ghost{color:#fff;border:1px solid rgba(255,255,255,.35)}
   .btn-ghost:hover{background:rgba(255,255,255,.1)}
+  /* Risk-reversal line directly under the hero CTAs — the single highest-read
+     piece of small text on the page. */
+  .hero-fud{margin-top:1.3rem;font-size:.88rem;color:rgba(255,255,255,.62);max-width:44ch}
   .hero-trust{
     position:absolute;bottom:34px;left:0;right:0;z-index:2;
     border-top:1px solid rgba(255,255,255,.14);
@@ -102,8 +111,7 @@
 
   /* ---------- Section base ---------- */
   section.block{padding:110px 0}
-  .divider-line{width:100%;height:36px;display:block}
-  .divider-line path{fill:none;stroke:var(--bronze);stroke-width:1;opacity:.4}
+  section.slim{padding:78px 0}
 
   /* ---------- Problem ---------- */
   .problem{background:var(--sand)}
@@ -111,6 +119,12 @@
   .problem h2{font-size:clamp(2rem,3.6vw,3rem);margin-bottom:1.4rem}
   .problem h2 em{font-style:italic;color:var(--bronze)}
   .problem p{color:var(--muted);font-size:1.06rem;margin-bottom:1.1rem;max-width:46ch}
+  /* Punchy scannable pain list — the "make them nod" beat. */
+  .pain{list-style:none;margin:1.6rem 0 1.4rem;display:flex;flex-direction:column;gap:.7rem}
+  .pain li{position:relative;padding-left:1.7rem;font-size:1rem;color:var(--ink)}
+  .pain li::before{
+    content:"";position:absolute;left:0;top:.62em;width:10px;height:1px;background:var(--bronze);
+  }
   .dir-card{
     background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px;
     box-shadow:0 18px 50px rgba(15,48,56,.06);
@@ -126,9 +140,42 @@
   .s-bad{background:rgba(180,80,70,.14);color:#A34A40}
   .dc-foot{margin-top:1.4rem;font-size:.85rem;color:var(--muted);font-style:italic}
 
+  /* ---------- Island band (the Oʻahu difference) ---------- */
+  .island{
+    background:
+      radial-gradient(120% 100% at 80% 0%, #1B505A 0%, rgba(27,80,90,0) 55%),
+      linear-gradient(160deg,#123840,#0A2229);
+    color:#fff;position:relative;overflow:hidden;
+  }
+  .island .contours{opacity:.3}
+  .island-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center}
+  .island .eyebrow{color:var(--bronze-soft)}
+  .island h2{font-size:clamp(2rem,3.8vw,3rem);margin-bottom:1.6rem}
+  .island h2 em{font-style:italic;color:var(--bronze-soft)}
+  .pull{
+    font-family:var(--display);font-size:clamp(1.3rem,2.2vw,1.75rem);font-style:italic;
+    line-height:1.35;color:var(--bronze-soft);border-left:2px solid rgba(196,168,118,.5);
+    padding-left:1.4rem;
+  }
+  .island-pts{list-style:none;display:flex;flex-direction:column;gap:1.15rem}
+  .island-pts li{color:rgba(255,255,255,.78);font-size:1rem;padding-bottom:1.15rem;border-bottom:1px solid rgba(255,255,255,.12)}
+  .island-pts li:last-child{border-bottom:none;padding-bottom:0}
+
+  /* ---------- Who it's for ---------- */
+  .who{background:var(--sand-deep)}
+  .who .head{max-width:620px;margin-bottom:40px}
+  .who h2{font-size:clamp(1.9rem,3.4vw,2.7rem)}
+  .who h2 em{font-style:italic;color:var(--bronze)}
+  .chips{display:flex;flex-wrap:wrap;gap:.7rem}
+  .chip{
+    background:#fff;border:1px solid var(--line);border-radius:100px;
+    padding:.6rem 1.15rem;font-size:.92rem;font-weight:500;color:var(--ink);
+  }
+  .who .tagline{margin-top:2rem;color:var(--muted);font-size:1.02rem;max-width:54ch}
+
   /* ---------- Process ---------- */
   .process{background:var(--sea-deep);color:#fff}
-  .process .head{text-align:center;max-width:600px;margin:0 auto 68px}
+  .process .head{text-align:center;max-width:620px;margin:0 auto 68px}
   .process .head .eyebrow{color:var(--bronze-soft)}
   .process h2{font-size:clamp(2rem,3.8vw,3.1rem)}
   .process h2 em{font-style:italic;color:var(--bronze-soft)}
@@ -152,6 +199,15 @@
   .ben .ic svg{width:20px;height:20px;stroke:var(--bronze);fill:none;stroke-width:1.6}
   .ben h3{font-size:1.25rem;margin-bottom:.55rem}
   .ben p{color:var(--muted);font-size:.96rem}
+  /* The "search has changed" note — a paragraph, deliberately not its own
+     section, so the page doesn't grow another block. */
+  .ai-note{
+    margin-top:34px;padding:26px 30px;border:1px solid var(--line);border-radius:16px;
+    background:rgba(166,136,79,.06);
+  }
+  .ai-note strong{font-weight:600}
+  .ai-note p{color:var(--muted);font-size:.98rem;max-width:74ch}
+  .ai-note .k{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bronze);font-weight:600;margin-bottom:.7rem}
 
   /* ---------- Pricing / CTA ---------- */
   .offer{
@@ -165,12 +221,21 @@
   .offer .eyebrow{color:var(--bronze-soft)}
   .offer h2{font-size:clamp(2.1rem,4vw,3.3rem);margin-bottom:1.3rem}
   .offer h2 em{font-style:italic;color:var(--bronze-soft)}
-  .offer p.lede{color:rgba(255,255,255,.8);font-size:1.08rem;max-width:44ch;margin-bottom:2rem}
+  .offer p.lede{color:rgba(255,255,255,.8);font-size:1.08rem;max-width:44ch;margin-bottom:1.9rem}
+  /* What's actually included — sits in the left column so the price card
+     stays short enough to keep the form near the fold of its own section. */
+  .incl{list-style:none;display:grid;gap:.75rem}
+  .incl li{position:relative;padding-left:1.8rem;color:rgba(255,255,255,.82);font-size:.98rem}
+  .incl li::before{
+    content:"";position:absolute;left:0;top:.42em;width:11px;height:6px;
+    border-left:1.5px solid var(--surf);border-bottom:1.5px solid var(--surf);
+    transform:rotate(-45deg);
+  }
   .price-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.16);border-radius:22px;padding:38px}
-  .price-row{display:flex;align-items:baseline;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+  .price-row{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12)}
   .price-row:last-of-type{border-bottom:none}
   .price-row .pl{font-size:1rem}
-  .price-row .pr{font-family:var(--display);font-size:1.5rem;color:var(--bronze-soft)}
+  .price-row .pr{font-family:var(--display);font-size:1.5rem;color:var(--bronze-soft);white-space:nowrap}
   .price-row .pr.free{color:var(--surf)}
   .price-note{font-size:.82rem;color:rgba(255,255,255,.6);margin:14px 0 24px;font-style:italic}
   .price-card .btn-primary{width:100%;justify-content:center}
@@ -203,6 +268,52 @@
   .form-done h3 em{font-style:italic;color:var(--bronze-soft)}
   .form-done p{color:rgba(255,255,255,.72);font-size:.95rem}
 
+  /* ---------- Local trust ---------- */
+  .trust{background:var(--sand)}
+  .trust-inner{max-width:720px}
+  .trust h2{font-size:clamp(1.9rem,3.4vw,2.7rem);margin-bottom:1.5rem}
+  .trust h2 em{font-style:italic;color:var(--bronze)}
+  .trust p{color:var(--muted);font-size:1.06rem;margin-bottom:1.1rem}
+  .sig{
+    margin-top:1.6rem;padding-top:1.6rem;border-top:1px solid var(--line);
+    display:flex;align-items:center;gap:1.15rem;
+  }
+  /* Real face, real name, no testimonials — this section converts on the fact
+     that there's a person behind it, so the photo is load-bearing, not decor. */
+  .sig img{
+    width:84px;height:84px;border-radius:50%;object-fit:cover;flex:none;
+    box-shadow:0 0 0 1px var(--line),0 0 0 4px var(--sand),0 0 0 5px rgba(166,136,79,.35);
+  }
+  .sig .who-name{font-family:var(--display);font-size:1.15rem;color:var(--ink);line-height:1.25}
+  .sig .who-name span{display:block;font-family:var(--body);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze);margin-top:.4rem;font-weight:600}
+
+  /* ---------- FAQ ---------- */
+  .faq{background:var(--sand-deep)}
+  .faq .head{max-width:620px;margin-bottom:44px}
+  .faq h2{font-size:clamp(1.9rem,3.4vw,2.7rem)}
+  .faq h2 em{font-style:italic;color:var(--bronze)}
+  .faq-list{max-width:820px}
+  .faq details{border-bottom:1px solid var(--line)}
+  .faq summary{
+    cursor:pointer;list-style:none;padding:1.25rem 2.5rem 1.25rem 0;position:relative;
+    font-family:var(--display);font-size:1.15rem;line-height:1.3;
+  }
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{
+    content:"";position:absolute;right:6px;top:1.75rem;width:11px;height:11px;
+    border-right:1.5px solid var(--bronze);border-bottom:1.5px solid var(--bronze);
+    transform:rotate(45deg);transition:transform .22s;
+  }
+  .faq details[open] summary::after{transform:rotate(-135deg)}
+  .faq details p{color:var(--muted);font-size:1rem;padding:0 2.5rem 1.5rem 0;max-width:70ch}
+
+  /* ---------- Closer ---------- */
+  .closer{background:var(--sea-deep);color:#fff;text-align:center}
+  .closer h2{font-size:clamp(1.9rem,3.6vw,2.8rem);margin-bottom:1rem}
+  .closer h2 em{font-style:italic;color:var(--bronze-soft)}
+  .closer p{color:rgba(255,255,255,.75);max-width:46ch;margin:0 auto 2rem}
+  .closer .fine{margin-top:1.4rem;font-size:.82rem;color:rgba(255,255,255,.5)}
+
   /* ---------- Footer ---------- */
   footer{background:var(--sea-deep);color:rgba(255,255,255,.7);padding:48px 0;border-top:1px solid rgba(255,255,255,.1)}
   .foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem}
@@ -212,23 +323,25 @@
 
   /* ---------- Responsive ---------- */
   @media(max-width:860px){
-    .problem-grid,.offer-inner{grid-template-columns:1fr;gap:44px}
+    .problem-grid,.offer-inner,.island-inner{grid-template-columns:1fr;gap:44px}
     .steps{grid-template-columns:1fr;gap:0}
     .step{padding:34px 0}
     .step + .step{border-left:none;border-top:1px solid rgba(255,255,255,.14)}
     .ben-grid{grid-template-columns:1fr}
     section.block{padding:80px 0}
+    section.slim{padding:64px 0}
     .brand .sub{display:none}
     .nav-cta{display:none}
     .hero-trust{display:none}
-    .hero-inner{padding:130px 0 80px}
+    .hero-inner{padding:112px 28px 80px}
+    .pull{padding-left:1.1rem}
   }
   @media(prefers-reduced-motion:reduce){
     .contours{animation:none}
     html{scroll-behavior:auto}
     *{transition:none!important}
   }
-  a:focus-visible,.btn:focus-visible{outline:2px solid var(--bronze-soft);outline-offset:3px;border-radius:100px}
+  a:focus-visible,.btn:focus-visible,summary:focus-visible{outline:2px solid var(--bronze-soft);outline-offset:3px;border-radius:8px}
 </style>
 </head>
 <body>
@@ -238,9 +351,9 @@
   <div class="wrap nav">
     <div class="brand">
       <span class="mark">SEO <em>Hawaii</em></span>
-      <span class="sub">Local Citation Audits</span>
+      <span class="sub">Oʻahu Citation Audits</span>
     </div>
-    <a href="#book" class="nav-cta">Book a free audit</a>
+    <a href="#book" class="nav-cta">Get my free audit</a>
   </div>
 </header>
 
@@ -257,16 +370,17 @@
     <path d="M-40,240 C180,180 360,280 600,220 C840,160 1020,260 1240,200" style="opacity:.2"></path>
   </svg>
   <div class="wrap hero-inner">
-    <div class="eyebrow" style="color:var(--bronze-soft)">Local Citations · Hawaii</div>
-    <h1>Make sure Hawaii can <em>find you.</em></h1>
-    <p class="lede">Your neighbors are searching Google, Apple Maps, and Yelp for what you do. If your listings are wrong or missing, they're finding someone else.</p>
+    <div class="eyebrow" style="color:var(--bronze-soft)">Free Citation Audit · Oʻahu Businesses</div>
+    <h1>Your next customer is searching right now. <em>Can they find you?</em></h1>
+    <p class="lede">I audit, clean up, and build your business listings across Google Maps, Apple Maps, Yelp, and 40+ platforms — so Oʻahu locals and visitors land on you instead of the shop down the street.</p>
     <div class="btn-row">
       <a class="btn btn-primary" href="#book">
-        Book your free audit
+        Check my listings — it's free
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
       </a>
       <a class="btn btn-ghost" href="#how">See how it works</a>
     </div>
+    <p class="hero-fud">No obligation. No pitch if everything looks good. Just honest answers.</p>
   </div>
   <div class="hero-trust">
     <div class="wrap">
@@ -286,9 +400,16 @@
   <div class="wrap problem-grid">
     <div>
       <div class="eyebrow">The problem</div>
-      <h2>Your business lives in more places than <em>you think.</em></h2>
+      <h2>Your business info might be <em>working against you.</em></h2>
       <p>Google pulls your name, address, and phone from dozens of directories — not just its own. When those listings disagree, it loses confidence and quietly pushes you down.</p>
-      <p>They're called <strong>citations</strong>. Cleaning them up is one of the simplest ways to climb in local search, and most Hawaii businesses have never checked theirs.</p>
+      <ul class="pain">
+        <li>Wrong phone number on Apple Maps</li>
+        <li>An old address still showing on Google</li>
+        <li>Duplicate listings splitting your visibility</li>
+        <li>Missing from directories your competitors are on</li>
+        <li>Hours that haven't been updated in years</li>
+      </ul>
+      <p>Most owners have no idea it's happening. That's exactly why the audit comes first, and why it's free.</p>
     </div>
     <div class="dir-card">
       <div class="dc-head">Sample audit snapshot</div>
@@ -304,31 +425,77 @@
   </div>
 </section>
 
+<!-- ============ THE OʻAHU DIFFERENCE ============ -->
+<section class="block island">
+  <svg class="contours" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path d="M-40,620 C180,560 360,660 600,600 C840,540 1020,640 1240,580"></path>
+    <path d="M-40,540 C180,480 360,580 600,520 C840,460 1020,560 1240,500"></path>
+    <path d="M-40,460 C180,400 360,500 600,440 C840,380 1020,480 1240,420"></path>
+    <path d="M-40,380 C180,320 360,420 600,360 C840,300 1020,400 1240,340"></path>
+  </svg>
+  <div class="wrap island-inner">
+    <div>
+      <div class="eyebrow">Why Oʻahu is different</div>
+      <h2>Here, a lost customer <em>doesn't come back.</em></h2>
+      <p class="pull">On the mainland, a customer might try again tomorrow. In Hawaii, that visitor is already on a plane home.</p>
+    </div>
+    <ul class="island-pts">
+      <li>Visitors search on their phone the minute they land — food, tours, services, all of it.</li>
+      <li>You're competing for the regular <em>and</em> for someone who's only here five days.</li>
+      <li>Kailua, Kapolei, the North Shore, ʻAiea — each one searches differently than Waikīkī.</li>
+      <li>Word travels fast on a small island. What people see online should match who you really are.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ WHO IT'S FOR ============ -->
+<section class="slim who">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Who this is for</div>
+      <h2>Built for Oʻahu businesses <em>like yours.</em></h2>
+    </div>
+    <div class="chips">
+      <span class="chip">Restaurants &amp; food trucks</span>
+      <span class="chip">Tours, activities &amp; charters</span>
+      <span class="chip">Contractors &amp; home services</span>
+      <span class="chip">Dental, medical &amp; wellness</span>
+      <span class="chip">Salons, spas &amp; med spas</span>
+      <span class="chip">Auto repair &amp; detailing</span>
+      <span class="chip">Wedding vendors &amp; photographers</span>
+      <span class="chip">Real estate &amp; property services</span>
+      <span class="chip">Fitness &amp; yoga studios</span>
+      <span class="chip">Local retail &amp; specialty shops</span>
+    </div>
+    <p class="tagline">If people look you up online before they call or drive over, this matters for your business.</p>
+  </div>
+</section>
+
 <!-- ============ PROCESS ============ -->
 <section class="block process" id="how">
   <div class="wrap">
     <div class="head">
       <div class="eyebrow">How it works</div>
-      <h2>Three simple steps, <em>no pressure.</em></h2>
+      <h2>Simple process. <em>No pressure.</em></h2>
     </div>
     <div class="steps">
       <div class="step">
         <div class="num">01</div>
         <h3>The free audit</h3>
-        <p>Send me your business name and website. I check every major directory for what's missing, wrong, or duplicated.</p>
-        <span class="tag">Free · No commitment</span>
+        <p>Send me your business name and website. I check every major platform for what's wrong, missing, or duplicated.</p>
+        <span class="tag">Free · 1–2 business days</span>
       </div>
       <div class="step">
         <div class="num">02</div>
-        <h3>Your report</h3>
-        <p>A plain-English breakdown of what's wrong and what's holding your ranking back. Yours to keep either way.</p>
-        <span class="tag">Delivered by email</span>
+        <h3>An honest report</h3>
+        <p>Plain English: exactly where you stand. If everything looks good, it's yours free and I move on.</p>
+        <span class="tag">No pitch either way</span>
       </div>
       <div class="step">
         <div class="num">03</div>
-        <h3>Clean up &amp; build</h3>
-        <p>If you want it fixed, I correct the errors and build the listings you're missing — by hand.</p>
-        <span class="tag">Flat $150 · Optional</span>
+        <h3>I fix it — if you want</h3>
+        <p>I correct the bad listings and build up to 50 accurate ones by hand, then send you the report and your logins.</p>
+        <span class="tag">Flat $200 · Optional</span>
       </div>
     </div>
   </div>
@@ -338,14 +505,14 @@
 <section class="block benefits">
   <div class="wrap">
     <div class="head">
-      <div class="eyebrow">What you get</div>
+      <div class="eyebrow">What it does for you</div>
       <h2>Small fixes, <em>real visibility.</em></h2>
     </div>
     <div class="ben-grid">
       <div class="ben">
         <div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4-4"></path></svg></div>
         <h3>Show up when locals search</h3>
-        <p>Consistent listings put you on Google Maps, Apple Maps, and the directories your customers actually use.</p>
+        <p>Consistent listings put you on Google Maps, Apple Maps, and the platforms your customers actually use.</p>
       </div>
       <div class="ben">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"></path><path d="M21 7v5h-5"></path></svg></div>
@@ -360,8 +527,12 @@
       <div class="ben">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
         <h3>One flat price</h3>
-        <p>No subscriptions, no retainers. Free audit, then $150 once — only if you want the fix.</p>
+        <p>No subscriptions, no retainers. Free audit, then $200 once — only if you want the fix.</p>
       </div>
+    </div>
+    <div class="ai-note">
+      <div class="k">Search has changed</div>
+      <p>People don't only Google anymore — they ask Siri, they ask Alexa, they ask AI assistants for <strong>a good [business] near me</strong>. Those answers get assembled from public business data across the web. I can't promise you AI rankings, and I won't. What I can do is build the accurate, consistent foundation those systems read from, so your business is eligible however your next customer searches.</p>
     </div>
   </div>
 </section>
@@ -378,16 +549,24 @@
     <div>
       <div class="eyebrow">Get started</div>
       <h2>Let's see where you <em>stand.</em></h2>
-      <p class="lede">I'll run your audit by hand and email the report in a few days. No cost, no commitment, no sales pressure. Hilo to Honolulu.</p>
+      <p class="lede">I'll run your audit by hand and email the report in 1–2 business days. No cost, no commitment, no sales call.</p>
+      <ul class="incl">
+        <li>Full listing audit across every major platform</li>
+        <li>Wrong and inconsistent info corrected</li>
+        <li>Up to 50 accurate local listings, built by hand</li>
+        <li>Duplicates found and resolved</li>
+        <li>Same name, address, phone, hours, website everywhere</li>
+        <li>Completion report — with the logins, so you own them</li>
+      </ul>
     </div>
     <div class="price-card">
       <div class="price-row"><span class="pl">Citation audit &amp; report</span><span class="pr free">Free</span></div>
-      <div class="price-row"><span class="pl">Full cleanup &amp; build</span><span class="pr">$150</span></div>
-      <div class="price-note">Flat, one-time — only if you decide to move forward.</div>
+      <div class="price-row"><span class="pl">Full cleanup &amp; build</span><span class="pr">$200</span></div>
+      <div class="price-note">Flat, one-time — only if you decide to move forward. No retainer, no contract.</div>
 
-      <!-- Replaces the old mailto: link. Posts to the Cloudflare Pages Function
-           at functions/api/audit.js. If that call fails for any reason, the
-           script below falls back to the original pre-filled email. -->
+      <!-- Posts to the Cloudflare Pages Function at functions/api/audit.js.
+           If that call fails for any reason, the script below falls back to the
+           original pre-filled email rather than stranding the visitor. -->
       <form id="auditForm" class="audit-form" action="/api/audit" method="POST" novalidate>
         <div class="fld">
           <label for="email">Your email</label>
@@ -406,7 +585,7 @@
           <input type="text" id="company_fax" name="company_fax" tabindex="-1" autocomplete="off">
         </div>
         <button type="submit" class="btn btn-primary" id="submitBtn">
-          Request my free audit
+          Get my free audit
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
         </button>
         <p class="form-note" id="formNote">Free. No credit card, no commitment.</p>
@@ -414,9 +593,76 @@
 
       <div class="form-done" id="formDone">
         <h3>Got it — <em>mahalo.</em></h3>
-        <p>I'll run your audit by hand and email the report over in a few days.</p>
+        <p>I'll run your audit by hand and email the report over in 1–2 business days.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ LOCAL TRUST ============ -->
+<section class="block trust">
+  <div class="wrap trust-inner">
+    <div class="eyebrow">Local to Oʻahu</div>
+    <h2>I'd rather show you the work than <em>fake the reviews.</em></h2>
+    <p>I'm not a mainland agency sending form emails to Hawaii businesses from three time zones away. I'm here. I know the difference between how Kalihi searches and how Waikīkī searches, and I know what it takes to compete for the regular and the visitor at the same time.</p>
+    <p>I built this because I kept watching good local businesses lose customers to problems that take an afternoon to fix. I'm also new, so you won't find stock-photo testimonials on this page. What you get instead is the actual audit, free, before you pay me anything — and right now I'm running them for a limited number of Oʻahu businesses. Be among the first and get an honest look at where you stand.</p>
+    <div class="sig">
+      <img src="pohai.webp" width="84" height="84" decoding="async"
+           alt="Pohai Kealoha, owner of Island Sync Solutions LLC">
+      <div class="who-name">
+        Pohai Kealoha
+        <span>Island Sync Solutions LLC · Honolulu</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="block faq">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Questions</div>
+      <h2>Straight answers, <em>no fine print.</em></h2>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>What if my listings are already accurate?</summary>
+        <p>Then you get a free report confirming it, and some peace of mind. I move on — no pitch. That happens sometimes, and I'd rather tell you than sell you something you don't need.</p>
+      </details>
+      <details>
+        <summary>What exactly is a citation?</summary>
+        <p>Any online mention of your business name, address, phone number, and website — directories, maps, review sites, industry platforms. When those all agree, search engines trust you. When they don't, you slide down the map.</p>
+      </details>
+      <details>
+        <summary>Will this guarantee I rank #1 on Google?</summary>
+        <p>No — and anyone promising that isn't being straight with you. Citation cleanup strengthens your local foundation. It's one important piece of a bigger local SEO picture, and it's usually the cheapest piece to fix.</p>
+      </details>
+      <details>
+        <summary>How long does it take?</summary>
+        <p>The free audit is typically back to you within 1–2 business days. The full cleanup and build is generally done within 7–14 business days.</p>
+      </details>
+      <details>
+        <summary>Do I have to do anything?</summary>
+        <p>Send your business details and confirm your correct info. I handle the submissions, the corrections, and the follow-up, and keep you posted along the way.</p>
+      </details>
+      <details>
+        <summary>Are you going to try to sell me a monthly retainer?</summary>
+        <p>No. This is a flat $200, one time. If you ever want more help down the road you can ask me — but nothing on this page renews, and I'm not going to chase you.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSER ============ -->
+<section class="slim closer">
+  <div class="wrap">
+    <h2>Let's make sure Oʻahu can <em>find you.</em></h2>
+    <p>Two minutes to request. Free to receive. No obligation either way.</p>
+    <a class="btn btn-primary" href="#book">
+      Get my free listing audit
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+    </a>
+    <p class="fine">Serving Oʻahu businesses from Honolulu to the North Shore.</p>
   </div>
 </section>
 
@@ -427,7 +673,7 @@
       <span class="mark" style="color:#fff">SEO <em style="color:var(--bronze-soft);font-style:italic">Hawaii</em></span>
     </div>
     <a href="mailto:info@islandsyncsolutions.com">info@islandsyncsolutions.com</a>
-    <span class="fine">© 2026 SEO Hawaii · Local citation audits · Made with aloha</span>
+    <span class="fine">© 2026 SEO Hawaii · Oʻahu citation audits · Made with aloha</span>
   </div>
 </footer>
 
