@@ -1,0 +1,5 @@
+# Workflow shell blocks must be LF: CRLF puts a literal  into every
+# command on ubuntu-latest runners, which fails as $'': command not found.
+*.yml  text eol=lf
+*.yaml text eol=lf
+*.sh   text eol=lf
